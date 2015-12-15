@@ -4,9 +4,9 @@ This package makes calling external APIs easier by adapting the code from ["Inte
 
 ### Table of Contents
   * Functions
-  * Example
     * `ExternalApi.call(args, callback)`
     * `ExternalApi.callSync(args, callback)`
+  * Example
 
 ### Functions
 
