@@ -1,6 +1,6 @@
 Package.describe({
   name: 'merlin:external-api',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: 'Async and sync functions to handle calling external APIs',
   git: 'https://github.com/merlinpatt/external-api',
   documentation: 'README.md'
