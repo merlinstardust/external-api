@@ -11,7 +11,7 @@ This package makes calling external APIs easier by adapting the code from ["Inte
 ### Functions
 
 * `ExternalApi.call(args, callback)`
-  * `args` - an object that requires `url` and `errorProperties` and may optionally take `method` and `httpOptions`
+  * `args` - an object that requires `url` and may optionally take `method` and `httpOptions`
 
   ```
   {
@@ -26,10 +26,6 @@ This package makes calling external APIs easier by adapting the code from ["Inte
     // Object - options as defined by HTTP.call in the Meteor docs
     // optional, defaults to {}
     httpOptions: {},
-
-    // Object - Used to get the API specific error code and message
-    // required
-    errorProperties: {code: '', message: ''},
   }
   ```
   * callback - a callback which receives `error` and `result` arguments
@@ -54,7 +50,6 @@ var edmodoCall = function edmodoCall(endpoint) {
     url: endpointUrl,
     method: 'GET',
     httpOptions: httpOptions,
-    errorProperties: {code: 'status_code', message: 'error'},
   });
 
   return response;
