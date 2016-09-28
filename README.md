@@ -37,6 +37,23 @@ This package makes calling external APIs easier by adapting the code from ["Inte
 This example is borrowed from my [edmodo-api](https://atmospherejs.com/merlin/edmodo-api) package
 
 ```
+// in ES2015+
+const edmodoCall = (endpoint, {method, data} = {}) => {
+  const url = Edmodo.baseUrl + endpoint;
+
+  const edmodoToken = Meteor.user().services.edmodo.accessToken;
+  const httpOptions = {
+    headers: {Authorization: `Bearer ${edmodoToken}`},
+  };
+
+  if (data) {
+    httpOptions.data = data;
+  }
+
+  return ExternalApi.callSync({httpOptions, method, url});
+};
+
+// in vanilla JS
 var edmodoCall = function edmodoCall(endpoint) {
   var baseUrl = 'https://api.edmodo.com/';
   var endpointUrl = baseUrl + endpoint;
@@ -53,13 +70,5 @@ var edmodoCall = function edmodoCall(endpoint) {
   });
 
   return response;
-};
-
-Edmodo.getGroups = function getGroups(groupId) {
-  groupId = groupId || '';
-  var endpoint = 'groups/' + groupId;
-  var groups = edmodoCall(endpoint);
-
-  return groups;
 };
 ```
